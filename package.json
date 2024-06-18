@@ -13,7 +13,7 @@
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
-    "docs": "npx quartz build --serve -d docs",
+    "docs": "npx quartz build --serve -d docs && node post-process.cjs",
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",
     "test": "tsx ./quartz/util/path.test.ts && tsx ./quartz/depgraph.test.ts",
@@ -45,6 +45,7 @@
     "d3": "^7.9.0",
     "esbuild-sass-plugin": "^2.16.1",
     "flexsearch": "0.7.43",
+    "fs": "^0.0.1-security",
     "github-slugger": "^2.0.0",
     "globby": "^14.0.1",
     "gray-matter": "^4.0.3",
