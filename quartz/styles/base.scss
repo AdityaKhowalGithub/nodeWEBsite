@@ -38,6 +38,7 @@ tr,
 td,
 li,
 ol,
+ul,
 .katex,
 .math {
   color: var(--darkgray);
@@ -482,7 +483,7 @@ video {
 
 ul.overflow,
 ol.overflow {
-  max-height: 400px;
+  max-height: 400;
   overflow-y: auto;
 
   // clearfix
@@ -517,142 +518,3 @@ ol.overflow {
   overflow-x: auto;
   overflow-y: hidden;
 }
-
-/* Additional aesthetic improvements */
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #f9f9f9;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #333;
-  font-weight: 600;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-top: 1.5rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-  margin-top: 1.25rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-  margin-top: 1rem;
-}
-
-h4 {
-  font-size: 1.25rem;
-  margin-top: 0.75rem;
-}
-
-h5, h6 {
-  font-size: 1rem;
-  margin-top: 0.5rem;
-}
-
-a {
-  color: #007BFF;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #0056b3;
-}
-
-blockquote {
-  border-left: 4px solid #007BFF;
-  padding-left: 1rem;
-  color: #555;
-  background-color: #f9f9f9;
-}
-
-code {
-  background-color: #f4f4f4;
-  border-radius: 3px;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.9rem;
-}
-
-pre {
-  background-color: #f4f4f4;
-  border-radius: 5px;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
-img {
-  max-width: 100%;
-  border-radius: 10px;
-  margin: 1rem 0;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 0.5rem;
-}
-
-th {
-  background-color: #f2f2f2;
-  text-align: left;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem 0;
-  color: #777;
-}
-
-.navbar {
-  background-color: #007BFF;
-  color: #fff;
-  padding: 1rem;
-}
-
-.navbar a {
-  color: #fff;
-  margin-right: 1rem;
-}
-
-.navbar a:hover {
-  color: #ddd;
-}
-
-.page-header {
-  background-color: #007BFF;
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
-  border-radius: 10px;
-  margin-bottom: 2rem;
-}
-
-.page-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-.page-header p {
-  margin: 0.5rem 0 0;
-  font-size: 1.25rem;
-}
-
-.page {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
