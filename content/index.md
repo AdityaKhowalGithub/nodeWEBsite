@@ -2,16 +2,28 @@
 title: Hi There 👋
 draft: false
 ---
-
+<div style="background-color: rgba(82, 124, 89, 0.3); border-left: 4px solid #ffecb5; padding: 10px; margin: 10px 0;">
+    Checkout my latest weekly review <a href="2024-W25">2024-W25</a>.
+</div>
 
 ---
 
 <div align="center">
 
+<div style="display: flex; justify-content: space-between; align-items: center;">
+
+<div style="flex: 1; text-align: left;">
+
 ## My name is Adi
 <span style="font-size:18px; font-weight:bold; color:#4285F4;">I go by Adi, Aditya, Khowal, anything tbh.</span>
 
----
+</div>
+
+<div style="flex: 1; text-align: right;">
+<img src="https://media1.tenor.com/m/7bh87lS3v7kAAAAd/monkey-confused-monkey.gif" height="300" />
+</div>
+
+</div>
 
 </div>
 
