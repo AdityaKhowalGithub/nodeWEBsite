@@ -5,7 +5,7 @@ draft: false
 <div style="background-color: rgba(82, 124, 89, 0.3); border-left: 4px solid #ffecb5; padding: 10px; margin: 10px 0;">
     Checkout my latest weekly review <a href="2024-W25">2024-W25</a>.
 </div>
-
+still migrating from my old portfolio [website](https://adityakh.info/).
 ---
 
 <div align="center">
