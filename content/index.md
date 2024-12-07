@@ -7,7 +7,7 @@ enableToc: false
 
 Hi, I'm Aditya Khowal (Adi). I'm a Computer Science student at the University of Washington, passionate about AI, software development, and solving interesting problems.
 
-[About Me](/about) | [Blog](/blog) | [Projects](/projects) | [Resume](/resume)
+[More about me](/resume)
 
 ---
 
