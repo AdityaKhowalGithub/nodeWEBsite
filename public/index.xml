@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Adi</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on Adi</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>resume</title>
+    <link>https://quartz.jzhao.xyz/resume</link>
+    <guid>https://quartz.jzhao.xyz/resume</guid>
+    <description>Resume ← Back to Home Aditya Khowal Software Engineer · Researcher · Student · Photographer 📧 akhowal@uw.edu 🔗 github.com/AdityaKhowalGithub 💼 linkedin.com/in/aditya-khowal ...</description>
+    <pubDate>Sat, 07 Dec 2024 06:56:22 GMT</pubDate>
+  </item><item>
+    <title>Hi There 👋</title>
+    <link>https://quartz.jzhao.xyz/</link>
+    <guid>https://quartz.jzhao.xyz/</guid>
+    <description>Welcome! 👋 Hi, I’m Aditya Khowal (Adi). I’m a Computer Science student at the University of Washington, passionate about AI, software development, and solving interesting problems.</description>
+    <pubDate>Wed, 04 Sep 2024 04:19:09 GMT</pubDate>
+  </item><item>
+    <title>About me</title>
+    <link>https://quartz.jzhao.xyz/About-me</link>
+    <guid>https://quartz.jzhao.xyz/About-me</guid>
+    <description>My name is Aditya - pronounced (Ah-dith-yuh). Some people call me by my last name, Khowal, but either works for me. I am a student at the University of Washington who is passionate about computer science.</description>
+    <pubDate>Mon, 20 May 2024 05:13:27 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
