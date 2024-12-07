@@ -15,7 +15,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "adityakhowal.com",
     ignorePatterns: ["private", "templates", ".obsidian","!(PublicMedia)**/!(*.md)", "!(*.md)"],
     defaultDateType: "created",
     theme: {
