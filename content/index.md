@@ -11,9 +11,19 @@ Some people call me by my last name, Khowal, but either works for me.
  [Blog](/blog)  | [Resume](/resume) 
  
 AI @ Stripe
-photographer, climber ex-swimmer, coffee 
 
-Previously @:
+
+photographer, climber, ex-swimmer, espresso 
+
+
+
+## What I'm Up To
+
+- Working on LLM Extraction Pipeline at UW's Larch Lab: https://llwang.net/lab/
+- Working on various side projects in ML
+- Software Engineer on Stripe's ML Foundations ORG
+
+## Previously @:
 - Stripe (observability diagnostics)
 	- Redacted Logs & Metrics in real time on the [data plane](https://netflix.github.io/mantis/)
 	- Worked in GO, Java, and tiny bit of Typescript.
@@ -29,18 +39,7 @@ Previously @:
 
 
 ---
-
-## What I'm Up To
-
-- Working on LLM Extraction Pipeline at UW's Larch Lab: https://llwang.net/lab/
-- Working on various side projects in ML
-
-## Featured Projects
-[slate]((https://filmwithslate.com)
-Film Production tool for producers. Helps with scheduling.
-
-### [Options Pricing Simulator](https://option-pricing-model.streamlit.app/)
-Advanced financial modeling tool featuring multiple pricing models, real-time analysis, and interactive visualizations. Built with Python, Streamlit, and MongoDB.
+# Check out [[projects.md]] or [[blog.md]] for more!
 
 ## Contact me
 📧 [akhowal@uw.edu](mailto:akhowal@uw.edu)  

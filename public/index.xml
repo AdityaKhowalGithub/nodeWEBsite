@@ -6,23 +6,29 @@
       <description>Last 10 notes on Adi</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>resume</title>
-    <link>https://quartz.jzhao.xyz/resume</link>
-    <guid>https://quartz.jzhao.xyz/resume</guid>
-    <description>Resume ← Back to Home Aditya Khowal Software Engineer · Researcher · Student · Photographer 📧 akhowal@uw.edu 🔗 github.com/AdityaKhowalGithub 💼 linkedin.com/in/aditya-khowal ...</description>
-    <pubDate>Sat, 07 Dec 2024 06:56:22 GMT</pubDate>
+    <title>Projects</title>
+    <link>https://quartz.jzhao.xyz/projects</link>
+    <guid>https://quartz.jzhao.xyz/projects</guid>
+    <description>Projects A collection of my technical projects 🤖 Machine Learning &amp; AI RedTeam Llama Python PyTorch HuggingFace Adversarial Jailbreaking Framework — Developed a modular ...</description>
+    <pubDate>Wed, 25 Jun 2025 18:42:10 GMT</pubDate>
+  </item><item>
+    <title>BON Jailbreaking P1</title>
+    <link>https://quartz.jzhao.xyz/blog/BON-Jailbreaking-P1</link>
+    <guid>https://quartz.jzhao.xyz/blog/BON-Jailbreaking-P1</guid>
+    <description> Recreating Best-of-N: A DIY Dive into LLM Jailbreaking Aditya K. | May 28, 2025 So, a few months back, I stumbled upon a paper called “Best-of-N (BoN) Jailbreaking” (arXiv:2412.03556v2), and the idea was so simple it was scary: what if you could break through an AI’s safety training just by asking a forbidden question over and over, but in slightly weird ways? The method is a numbers game that relies on persistence, not clever prompts.</description>
+    <pubDate>Fri, 13 Jun 2025 06:33:57 GMT</pubDate>
+  </item><item>
+    <title>blog</title>
+    <link>https://quartz.jzhao.xyz/blog</link>
+    <guid>https://quartz.jzhao.xyz/blog</guid>
+    <description>BON Jailbreaking P1.</description>
+    <pubDate>Fri, 13 Jun 2025 06:21:26 GMT</pubDate>
   </item><item>
     <title>Hi There 👋</title>
     <link>https://quartz.jzhao.xyz/</link>
     <guid>https://quartz.jzhao.xyz/</guid>
-    <description>Welcome! 👋 Hi, I’m Aditya Khowal (Adi). I’m a Computer Science student at the University of Washington, passionate about AI, software development, and solving interesting problems.</description>
-    <pubDate>Wed, 04 Sep 2024 04:19:09 GMT</pubDate>
-  </item><item>
-    <title>About me</title>
-    <link>https://quartz.jzhao.xyz/About-me</link>
-    <guid>https://quartz.jzhao.xyz/About-me</guid>
-    <description>My name is Aditya - pronounced (Ah-dith-yuh). Some people call me by my last name, Khowal, but either works for me. I am a student at the University of Washington who is passionate about computer science.</description>
-    <pubDate>Mon, 20 May 2024 05:13:27 GMT</pubDate>
+    <description>Aditya - (uhh-dith-yuh). Some people call me by my last name, Khowal, but either works for me. Blog | Resume AI @ Stripe photographer, climber, ex-swimmer, espresso What I’m Up To Working on LLM Extraction Pipeline at UW’s Larch Lab: llwang.net/lab/ Working on various side projects in ML Software Engineer on Stripe’s ML Foundations ORG Previously @: Stripe (observability diagnostics) Redacted Logs &amp; Metrics in real time on the data plane Worked in GO, Java, and tiny bit of Typescript.</description>
+    <pubDate>Fri, 13 Jun 2025 05:58:58 GMT</pubDate>
   </item>
     </channel>
   </rss>
