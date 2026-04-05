@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronon.ai, Shepherd | Aditya Khowal</title>
+    <meta
+      name="description"
+      content="A short note by Aditya Khowal on Shepherd, Stripe's feature engineering platform, and its fork of the open-source Chronon repo."
+    />
+    <meta name="theme-color" content="#e64554" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="site-header">
+        <a class="wordmark" href="../">Aditya Khowal</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="../projects/">Projects</a>
+          <a href="../blog/">Writing</a>
+          <a href="https://github.com/AdityaKhowalGithub" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/aditya-khowal" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+      </header>
+
+      <article class="article">
+        <p class="back-link"><a href="./">Back to writing</a></p>
+        <h1 class="page-title">Chronon.ai, Shepherd</h1>
+
+        <div class="article-body">
+          <p>
+            Shepherd is Stripe's fork of the open-source
+            <a href="https://chronon.ai" target="_blank" rel="noreferrer">Chronon</a> repo. It is our feature engineering
+            platform for computing point-in-time correct data across both offline and online ML use cases, from batch
+            training pipelines to low-latency model serving.
+          </p>
+
+          <p>
+            A lot of the work around it lives at the intersection of Scala, Java, Python, and distributed systems. The
+            goal is to let ML teams define features once and then use those definitions consistently across training,
+            backfills, and online lookup.
+          </p>
+
+          <h2>Core Abstractions</h2>
+
+          <ul class="plain-list compact">
+            <li><strong>Source</strong>: where raw data enters the system, like event streams, snapshots, or warehouse tables.</li>
+            <li><strong>GroupBy</strong>: the aggregation primitive for turning raw inputs into feature values over windows or buckets.</li>
+            <li><strong>Join</strong>: how multiple features are combined into a wide training or serving view with point-in-time correctness.</li>
+            <li><strong>StagingQuery</strong>: arbitrary Spark SQL for the pre- or post-processing that does not fit neatly elsewhere.</li>
+          </ul>
+
+          <h2>How It Works</h2>
+
+          <p>
+            The real win is that a user does not have to think in completely separate systems for historical backfills,
+            fresh streaming updates, and low-latency feature lookup. Shepherd provides a DSL that abstracts most of that
+            complexity away and orchestrates the right combination of underlying systems.
+          </p>
+
+          <ul class="plain-list compact">
+            <li><strong>Spark</strong> handles large batch processing for training and historical computation.</li>
+            <li><strong>Flink</strong> supports real-time, low-latency streaming updates.</li>
+            <li><strong>Airflow</strong> orchestrates the workflows.</li>
+            <li><strong>Kafka</strong> carries raw event streams.</li>
+            <li><strong>Key-value storage</strong> serves online feature lookup.</li>
+            <li><strong>Hive or Iceberg</strong> stores batch output in the data lake.</li>
+          </ul>
+
+          <p>
+            Architecturally, the system ends up looking a lot like Lambda Architecture: one path optimized for batch
+            correctness and another for fresh streaming updates, both feeding a shared view of the world that models can
+            rely on.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

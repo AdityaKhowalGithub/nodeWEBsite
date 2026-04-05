@@ -1,18 +1,38 @@
-# Quartz v4
+# Aditya Khowal website
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+This repo is a plain static website. The source of truth is `site/`.
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
-Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
+## Editing
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+- `site/index.html` for the homepage
+- `site/projects/index.html` for the projects page
+- `site/blog/index.html` for the writing index
+- `site/blog/*.html` for article pages
+- `site/styles.css` for the shared styling
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+## Local preview
 
-## Sponsors
+Run a simple static server from the repo root:
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+```bash
+python3 -m http.server 8000 -d site
+```
+
+Then open `http://localhost:8000`.
+
+## Docker
+
+Build and run the site with Nginx:
+
+```bash
+docker build -t aditya-site .
+docker run --rm -p 8080:80 aditya-site
+```
+
+Then open `http://localhost:8080`.
+
+## Deployment
+
+GitHub Pages deploys `site/` directly through `.github/workflows/deploy.yml`.
+CI validates the HTML, checks internal links, and smoke-tests the Docker image.
+

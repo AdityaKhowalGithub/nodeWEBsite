@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recreating Best-of-N | Aditya Khowal</title>
+    <meta
+      name="description"
+      content="A write-up by Aditya Khowal on reproducing Best-of-N jailbreaking experiments on smaller models."
+    />
+    <meta name="theme-color" content="#e64554" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="site-header">
+        <a class="wordmark" href="../">Aditya Khowal</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="../projects/">Projects</a>
+          <a href="../blog/">Writing</a>
+          <a href="https://github.com/AdityaKhowalGithub" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/aditya-khowal" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+      </header>
+
+      <article class="article">
+        <p class="back-link"><a href="./">Back to writing</a></p>
+        <p class="eyebrow">May 28, 2025</p>
+        <h1 class="page-title">Recreating Best-of-N: A DIY Dive into LLM Jailbreaking</h1>
+
+        <div class="article-body">
+          <p>
+            A few months back, I stumbled onto the paper
+            <a href="https://arxiv.org/abs/2402.04249" target="_blank" rel="noreferrer">Best-of-N (BoN) Jailbreaking</a>,
+            and the idea was simple enough to be unsettling: keep asking a blocked question over and over, but mutate it
+            slightly each time, and eventually one version can slip through the model's safety layer.
+          </p>
+
+          <p>
+            The method is more brute force than cleverness. Instead of designing one especially devious prompt, you take a
+            harmful request and apply random augmentations like character scrambling, weird capitalization, or small ASCII
+            distortions. Most versions fail. The interesting part is that when you generate enough of them, some start to
+            land in odd corners of the input space that the alignment layer handles badly.
+          </p>
+
+          <p>
+            That was enough to hook me. I wanted to see if I could reproduce the behavior myself, not just verify the
+            paper's claim from a distance. I also wanted to understand what the attack feels like in practice on smaller,
+            more accessible models rather than only reading about frontier-model results.
+          </p>
+
+          <h2>The First Attempt: My M1 Mac Gives It a Go</h2>
+
+          <p>
+            The first version of the experiment ran on my Apple M1 Mac. I used
+            <code>google/gemma-3-1b-it</code> as the target model and paired it with a smaller classifier model to judge
+            whether responses were actually harmful or just noisy. After implementing the paper's augmentation rules, I
+            started to see early successes around <code>N = 75</code>.
+          </p>
+
+          <p>
+            That first successful jailbreak was a weird combination of excitement and concern. It meant the method really
+            did transfer into a small self-run setup. The harder part was realizing how slow the setup was. Pushing one
+            prompt all the way to <code>N = 5000</code> would take most of a day on local hardware, and running a small
+            sweep across several prompts would stretch into nearly a week.
+          </p>
+
+          <h2>To the Cloud: Scaling Up with Colab and CUDA</h2>
+
+          <p>
+            That was the point where local curiosity had to become actual infrastructure. I bought a small amount of
+            Google Colab compute so I could run the experiment on NVIDIA GPUs like the T4, L4, or A100. The migration was
+            pretty simple: switch devices from <code>mps</code> to <code>cuda</code>, load models with
+            <code>torch.float16</code>, and let the experiment run where it had enough compute to finish in a reasonable
+            window.
+          </p>
+
+          <p>
+            The difference was immediate. Jobs that took minutes on my laptop finished in seconds, which made it realistic
+            to test the larger ranges from the paper instead of stopping at toy values.
+          </p>
+
+          <h2>Pragmatism vs. Paper Purity</h2>
+
+          <p>
+            Moving the experiment into the cloud also forced some choices about methodology. The paper uses GPT-4o with the
+            HarmBench grader prompt as a judge. That is a strong setup, but it relies on API access and cost that I wanted
+            to avoid for a self-contained reproduction.
+          </p>
+
+          <p>
+            I ended up using <code>cais/HarmBench-Mistral-7b-val-cls</code> as a compromise. It is open source, designed
+            for the exact classification problem I cared about, and gave the evaluation more credibility than a tiny local
+            classifier. I also implemented the paper's appendix-style pre-filtering rules to throw out obvious false
+            positives where the model was merely decoding the garbled prompt rather than actually answering it.
+          </p>
+
+          <p>
+            For the target model, I stuck with <code>gemma-3-1b-it</code>. It is not a frontier system, but that was not
+            the point. I wanted to test the method and its scaling behavior on a model I could actually run and inspect.
+          </p>
+
+          <h2>The Experiment in Motion</h2>
+
+          <p>
+            The experiment logs every success and failure for each base prompt as the number of attempts increases. The
+            metric I care most about is the shape of the attack success rate curve: whether it rises smoothly with
+            increasing <code>N</code> and whether the broad power-law intuition from the paper shows up in a smaller
+            reproduction.
+          </p>
+
+          <p>
+            What is striking about Best-of-N is that it feels less like a single exploit and more like a search process.
+            If the input space is wide enough, persistence alone can uncover strange paths that the safety layer never
+            learned to handle well. That is what makes the result feel important. It is not just about one class of bad
+            prompts. It is about how hard robustness becomes when the model has to generalize over nearly infinite surface
+            forms.
+          </p>
+
+          <p>
+            I'll keep following up as I finish the runs and turn the results into plots, but even before the final chart,
+            the exercise already makes one thing clear: patching individual holes is not enough. Safety has to come from a
+            system that stays stable under a huge range of messy, adversarial inputs.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

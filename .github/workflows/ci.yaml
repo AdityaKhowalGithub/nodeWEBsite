@@ -1,71 +1,38 @@
-name: Build and Test
+name: Validate static site
 
 on:
   pull_request:
-    branches:
-      - v4
+    branches: [main]
   push:
-    branches:
-      - v4
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  build-and-test:
-    if: ${{ github.repository == 'jackyzha0/quartz' }}
-    strategy:
-      matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - run: npm ci
-
-      - name: Check types and style
-        run: npm run check
-
-      - name: Test
-        run: npm test
-
-      - name: Ensure Quartz builds, check bundle info
-        run: npx quartz build --bundleInfo
-
-  publish-tag:
-    if: ${{ github.repository == 'jackyzha0/quartz' }}
+  validate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Get package version
-        run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
-      - name: Create release tag
-        uses: pkgdeps/git-tag-action@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_repo: ${{ github.repository }}
-          version: ${{ env.PACKAGE_VERSION }}
-          git_commit_sha: ${{ github.sha }}
-          git_tag_prefix: "v"
+          python-version: "3.x"
+
+      - name: Validate HTML and internal links
+        run: python3 scripts/validate_site.py
+
+      - name: Build Docker image
+        run: docker build -t aditya-site:ci .
+
+      - name: Smoke test container
+        run: |
+          cid=$(docker run -d -p 8080:80 aditya-site:ci)
+          trap 'docker rm -f "$cid"' EXIT
+          sleep 2
+          curl --fail http://127.0.0.1:8080/
+          curl --fail http://127.0.0.1:8080/blog/
+          curl --fail http://127.0.0.1:8080/projects/
+          curl --fail http://127.0.0.1:8080/404.html
+          status=$(curl --silent --output /dev/null --write-out "%{http_code}" http://127.0.0.1:8080/does-not-exist)
+          test "$status" = "404"
+
